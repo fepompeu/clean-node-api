@@ -44,7 +44,7 @@ describe('SingUp Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('password'))
   })
 
-  it('should return 400 if no name is provided', () => {
+  it('should return 400 if no name is provided ', () => {
     const sut = new SignUpController()
     const httpRequest = {
       body: {
