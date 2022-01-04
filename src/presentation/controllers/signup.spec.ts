@@ -1,8 +1,8 @@
-import { SignUpControler } from './singup'
+import { SignUpController } from './singup'
 
 describe('SingUp Controller', () => {
   it('should return 400 if no name is provided', () => {
-    const sut = new SignUpControler()
+    const sut = new SignUpController()
     const httpRequest = {
       body: {
         name: 'any_name',
