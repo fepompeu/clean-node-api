@@ -40,7 +40,7 @@ describe('SingUp Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('name'))
   })
 
-  it('should return 400 if no name is provided', () => {
+  it('should return 400 if no e-mail is provided', () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -54,7 +54,7 @@ describe('SingUp Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('email'))
   })
 
-  it('should return 400 if no name is provided', () => {
+  it('should return 400 if no password is provided', () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
@@ -68,7 +68,7 @@ describe('SingUp Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('password'))
   })
 
-  it('should return 400 if no name is provided ', () => {
+  it('should return 400 if no password confirmation is provided ', () => {
     const { sut } = makeSut()
     const httpRequest = {
       body: {
