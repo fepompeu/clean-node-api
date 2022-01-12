@@ -74,4 +74,14 @@ describe('DbAddAccount Usecase', () => {
     jest.spyOn(addAccountRepositoryStub, 'add').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     expect(await sut.add(accountData)).toThrow()
   })
+
+  test('should return an account on success', async () => {
+    const { sut } = makeSut()
+    const account = await sut.add(accountData)
+    expect(account).toEqual({
+      ...accountData,
+      id: 'valid_id',
+      password: 'hashed_password'
+    })
+  })
 })
