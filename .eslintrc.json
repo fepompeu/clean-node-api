@@ -4,6 +4,13 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/strict-boolean-expressions": "off"
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    // TODO: Try to remove the rule below
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
   }
 }
