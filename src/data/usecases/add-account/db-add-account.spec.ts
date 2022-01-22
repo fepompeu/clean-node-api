@@ -57,12 +57,13 @@ describe('DbAddAccount Usecase', () => {
     expect(encryptSpy).toHaveBeenCalledWith(makeFakeAccountData().password)
   })
 
-  // TODO: Test broking due new Error throws
-  test.skip('should throw if Encrypter throws', async () => {
+  test('should throw if Encrypter throws', async () => {
     const { sut, encrypterStub } = makeSut()
     jest.spyOn(encrypterStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
 
-    expect(await sut.add(makeFakeAccountData())).toThrow()
+    const promise = sut.add(makeFakeAccountData())
+
+    await expect(promise).rejects.toThrow()
   })
 
   test('should call AddAccountRepository with correct password', async () => {
@@ -75,12 +76,13 @@ describe('DbAddAccount Usecase', () => {
     expect(addSpy).toHaveBeenCalledWith(accountDataWitHashedPassword)
   })
 
-  // TODO: Test broking due new Error throws
-  test.skip('should throw if Encrypter throws', async () => {
+  test('should throw if add throws', async () => {
     const { sut, addAccountRepositoryStub } = makeSut()
     jest.spyOn(addAccountRepositoryStub, 'add').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
 
-    expect(await sut.add(makeFakeAccountData())).toThrow()
+    const promise = sut.add(makeFakeAccountData())
+
+    await expect(promise).rejects.toThrow()
   })
 
   test('should return an account on success', async () => {
