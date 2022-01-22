@@ -7,6 +7,7 @@ export const adaptRoute = (controller: Controller) => {
       body: req.body
     }
     const httpResponse = await controller.handle(httpRequest)
+    // TODO: Create a test for condition below
     if (httpResponse.statusCode === 500) {
       res.status(httpResponse.statusCode).json({
         error: httpResponse.body.message
