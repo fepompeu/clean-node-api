@@ -1,6 +1,7 @@
 import { InvalidParamError, MissingParamError } from '../../errors'
 import { badRequest } from '../../helpers/http-helper'
 import { EmailValidator } from '../signup/singup-protocols'
+import { HttpRequest } from '../../protocols'
 import { LoginController } from './login'
 
 interface SutTypes {
@@ -8,7 +9,7 @@ interface SutTypes {
   emailValidatorStub: EmailValidator
 }
 
-const makeFakeRequest = (): any => ({
+const makeFakeRequest = (): HttpRequest => ({
   body: {
     email: 'any_email@mail.com',
     password: 'any_password'
